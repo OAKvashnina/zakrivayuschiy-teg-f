@@ -78,10 +78,10 @@
   position: relative;
   border: none;
   padding: 0px;
-  text-transform: uppercase;
-  background-color: transparent;
   font-size: 14px;
   line-height: 100%;
+  text-transform: uppercase;
+  background-color: transparent;
 }
 
 .theme-menu__button:disabled {
@@ -135,11 +135,10 @@
 .card {
   border: var(--accent-color) solid 2px;
   background-color: var(--background-color);
-  
 }
 
 .card__title {
-border-bottom: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
   padding: 4px 10px;
   font-size: 18px;
   line-height: 121%;
@@ -175,7 +174,10 @@ border-bottom: 2px solid currentColor;
   mix-blend-mode: hard-light;
 }
 
-@supports ((text-stroke: 1px var(--background-color)) or (-webkit-text-stroke: 1px var(--background-color))) {
+@supports (
+  (text-stroke: 1px var(--background-color)) or
+    (-webkit-text-stroke: 1px var(--background-color))
+) {
   .card__picture-label {
     text-shadow: none;
     -webkit-text-stroke: 1px var(--background-color);
@@ -187,7 +189,8 @@ border-bottom: 2px solid currentColor;
 .card__text {
   display: grid;
   gap: 27px;
-  /*border-block-start: var(--accent-color) solid 2px;*/ border-top: 2px solid currentColor;
+  /*border-block-start: var(--accent-color) solid 2px;*/
+  border-top: 2px solid currentColor;
   padding: 25px;
   line-height: 117%;
 }
@@ -346,9 +349,11 @@ border-bottom: 2px solid currentColor;
 }
 
 @media (width <=375px) {
-  .page__content, header, .card{
+  .page__content,
+  .header,
+  .card {
     --width-content: 100%;
-   inline-size: var(--width-content);
+    inline-size: var(--width-content);
   }
 
   .header {
