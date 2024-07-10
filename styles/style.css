@@ -69,7 +69,7 @@
 
 .theme-menu__list {
   display: grid;
-  gap: 14px;
+  gap: 11px;
   padding-inline-start: 19px;
   font-size: 14px;
 }
@@ -82,6 +82,7 @@
   line-height: 100%;
   text-transform: uppercase;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .theme-menu__button:disabled {
@@ -93,7 +94,6 @@
 .theme-menu__button:hover {
   opacity: 0.6;
   transition: opacity 0.3s;
-  cursor: pointer;
 }
 
 .theme-menu__button:focus-visible {
@@ -108,8 +108,17 @@
   outline: none;
 }
 
-.theme-menu__button:focus-visible::before {
+.theme-menu__button:after {
+  content: "";
+  background-color: currentColor;
+  display: block;
+  height: 2px;
   transition: transform 0.3s;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.theme-menu__button:focus-visible::after {
   transform: scaleX(1);
 }
 
@@ -117,7 +126,7 @@
   content: "▶";
   position: absolute;
   left: -17px;
-  animation: pointer 0.5s ease-in-out 0.5s infinite alternate;
+  animation: pointer 0.5s ease-in-out infinite alternate;
 }
 
 .page__content {
@@ -189,7 +198,6 @@
 .card__text {
   display: grid;
   gap: 27px;
-  /*border-block-start: var(--accent-color) solid 2px;*/
   border-top: 2px solid currentColor;
   padding: 25px;
   line-height: 117%;
@@ -209,7 +217,7 @@
   padding: 0;
   outline: none;
   background-color: transparent;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s;
   cursor: pointer;
   block-size: 100%;
 }
@@ -228,19 +236,17 @@
 
 .button:focus-visible {
   box-shadow: 2px 2px 0px 0px currentColor;
-  outline: none;
-  transition: box-shadow 0.3s;
 }
 
 .button {
   position: relative;
   border: var(--accent-color) solid 2px;
   padding: 0;
-  box-shadow: 0 0 0 transparent;
   background-color: var(--background-color);
-  transition: box-shadow 0.3s;
   cursor: pointer;
   appearance: none;
+  outline: none;
+  transition: box-shadow 0.3s;
 }
 
 .button::before {
@@ -320,8 +326,16 @@
   block-size: 38px;
 }
 
-.filter-contrast {
-  filter: invert(1) brightness(200%) saturate(60%) hue-rotate(90deg);
+.filter-brightness {
+  filter: brightness(90%);
+}
+
+.filter-grayscale {
+  filter: grayscale(75%);
+}
+
+.filter-saturate {
+  filter: saturate(200%);
 }
 
 .filter-hue-rotate {
@@ -332,20 +346,16 @@
   filter: invert(88%);
 }
 
-.filter-grayscale {
-  filter: grayscale(75%);
+.filter-sepia {
+  filter: sepia(100%);
 }
 
 .filter-blur {
   filter: blur(10px);
 }
 
-.filter-sepia {
-  filter: sepia(67%);
-}
-
-.filter-brightness {
-  filter: brightness(300%);
+.filter-mix {
+  filter: invert(20%) brightness(100%) saturate(50%) hue-rotate(80deg);
 }
 
 @media (width <=375px) {
@@ -366,9 +376,5 @@
 
   .button__text {
     flex-direction: column;
-  }
-
-  .dialog {
-    padding: 30px 42px;
   }
 }
